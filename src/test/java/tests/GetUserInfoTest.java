@@ -1,17 +1,18 @@
 package tests;
 
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GetUserInfoTest extends BaseTest {
 
-    @Test@DisplayName("Get user info")
+    @Test
+    @DisplayName("Get user info")
     public void successfulGetUserInfo() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -30,7 +31,8 @@ public class GetUserInfoTest extends BaseTest {
         assertTrue(books.isEmpty(), "The user's book collection is not empty");
     }
 
-    @Test@DisplayName("Get user info with invalid token")
+    @Test
+    @DisplayName("Get user info with invalid token")
     public void getUserInfoWithInvalidToken() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -45,7 +47,8 @@ public class GetUserInfoTest extends BaseTest {
         getUserInformation(createdUserId, 401);
     }
 
-    @Test@DisplayName("Get user info with empty token")
+    @Test
+    @DisplayName("Get user info with empty token")
     public void getUserInfoWithEmptyToken() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -60,7 +63,8 @@ public class GetUserInfoTest extends BaseTest {
         getUserInformation(createdUserId, 401);
     }
 
-    @Test@DisplayName("Get user info with invalid userId")
+    @Test
+    @DisplayName("Get user info with invalid userId")
     public void getUserInfoWithInvalidUserId() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -76,7 +80,8 @@ public class GetUserInfoTest extends BaseTest {
 
     }
 
-    @Test@DisplayName("Get user info with empty userId")
+    @Test
+    @DisplayName("Get user info with empty userId")
     public void getUserInfoWithEmptyUserId() {
         //create user
         createUser(randomUsername, passwordValue, 201);

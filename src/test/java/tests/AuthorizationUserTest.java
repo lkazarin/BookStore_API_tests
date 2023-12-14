@@ -4,11 +4,12 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AuthorizationUserTest extends BaseTest{
+public class AuthorizationUserTest extends BaseTest {
 
-    @Test@DisplayName("Check user authorization")
+    @Test
+    @DisplayName("Check user authorization")
     public void successfulAuthorizationUser() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -21,7 +22,8 @@ public class AuthorizationUserTest extends BaseTest{
         assertTrue(authorizedUserResponse.getBody().as(Boolean.class), "The response body is not 'true'");
     }
 
-    @Test@DisplayName("Check user authorization without generating token")
+    @Test
+    @DisplayName("Check user authorization without generating token")
     public void authorizationUserWithoutGeneratingToken() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();
@@ -37,7 +39,8 @@ public class AuthorizationUserTest extends BaseTest{
     }
 
 
-    @Test@DisplayName("Check user authorization with invalid username")
+    @Test
+    @DisplayName("Check user authorization with invalid username")
     public void authorizationUserWithInvalidUsername() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();
@@ -52,7 +55,8 @@ public class AuthorizationUserTest extends BaseTest{
         checkAuthorization(invalidUsername, passwordValue, 404);
     }
 
-    @Test@DisplayName("Check user authorization with invalid password")
+    @Test
+    @DisplayName("Check user authorization with invalid password")
     public void authorizationUserWithInvalidPassword() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();
@@ -67,7 +71,8 @@ public class AuthorizationUserTest extends BaseTest{
         checkAuthorization(createdUserName, invalidPassword, 404);
     }
 
-    @Test@DisplayName("Check user authorization with empty username")
+    @Test
+    @DisplayName("Check user authorization with empty username")
     public void authorizationUserWithEmptyUsername() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();
@@ -82,7 +87,8 @@ public class AuthorizationUserTest extends BaseTest{
         checkAuthorization("", passwordValue, 400);
     }
 
-    @Test@DisplayName("Check user authorization with empty password")
+    @Test
+    @DisplayName("Check user authorization with empty password")
     public void authorizationUserWithEmptyPassword() {
         //create user
         createUser(randomUsername, passwordValue, 201);

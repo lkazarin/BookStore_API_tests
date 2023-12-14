@@ -2,20 +2,17 @@ package tests;
 
 import dto.ValidAddListOfBookRequest;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.hamcrest.Matchers.in;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DeleteAllBooksByUserTest extends BaseTest{
+public class DeleteAllBooksByUserTest extends BaseTest {
 
-    @Test@DisplayName("Delete all book by user collection")
+    @Test
+    @DisplayName("Delete all book by user collection")
     public void successfulDeleteAllBooksByUserTest() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -44,7 +41,8 @@ public class DeleteAllBooksByUserTest extends BaseTest{
         assertTrue(books.isEmpty(), "The user's book collection is not empty");
     }
 
-    @Test@DisplayName("Delete all book by user collection with invalid userId")
+    @Test
+    @DisplayName("Delete all book by user collection with invalid userId")
     public void DeleteAllBooksByUserTestWithInvalidUserId() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -68,7 +66,8 @@ public class DeleteAllBooksByUserTest extends BaseTest{
         deleteRequestWithoutBody(booksEndpoint + "?UserId=" + invalidUserId, 401);
     }
 
-    @Test@DisplayName("Delete all book by user collection with empty userId")
+    @Test
+    @DisplayName("Delete all book by user collection with empty userId")
     public void DeleteAllBooksByUserTestWithEmptyUserId() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -92,7 +91,8 @@ public class DeleteAllBooksByUserTest extends BaseTest{
         deleteRequestWithoutBody(booksEndpoint + "?UserId=" + "", 401);
     }
 
-    @Test@DisplayName("Delete all book by user collection with invalid token")
+    @Test
+    @DisplayName("Delete all book by user collection with invalid token")
     public void DeleteAllBooksByUserTestWithInvalidToken() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -119,7 +119,8 @@ public class DeleteAllBooksByUserTest extends BaseTest{
         deleteRequestWithoutBody(booksEndpoint + "?UserId=" + createdUserId, 401);
     }
 
-    @Test@DisplayName("Delete all book by user collection with empty token")
+    @Test
+    @DisplayName("Delete all book by user collection with empty token")
     public void DeleteAllBooksByUserTestWithEmptyToken() {
         //create user
         createUser(randomUsername, passwordValue, 201);

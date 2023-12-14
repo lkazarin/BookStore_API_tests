@@ -2,21 +2,19 @@ package tests;
 
 import dto.ValidAddListOfBookRequest;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
 
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 public class DeleteBookByIsbnUserTest extends BaseTest {
 
-    @Test@DisplayName("Delete book with ISBN from user's collection")
+    @Test
+    @DisplayName("Delete book with ISBN from user's collection")
     public void successfulDeleteBookWithIsbnFromUserTest() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -48,7 +46,8 @@ public class DeleteBookByIsbnUserTest extends BaseTest {
         }
     }
 
-    @Test@DisplayName("Delete book with invalid ISBN from user's collection")
+    @Test
+    @DisplayName("Delete book with invalid ISBN from user's collection")
     public void deleteBookWithInvalidIsbnFromUserTest() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -72,7 +71,8 @@ public class DeleteBookByIsbnUserTest extends BaseTest {
         deleteBookByIsbn(invalidIsbn, createdUserId, 400);
     }
 
-    @Test@DisplayName("Delete book with empty ISBN from user's collection")
+    @Test
+    @DisplayName("Delete book with empty ISBN from user's collection")
     public void deleteBookWithEmptyIsbnFromUserTest() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -96,7 +96,8 @@ public class DeleteBookByIsbnUserTest extends BaseTest {
         deleteBookByIsbn("", createdUserId, 400);
     }
 
-    @Test@DisplayName("Delete book with ISBN and invalid userId from user's collection")
+    @Test
+    @DisplayName("Delete book with ISBN and invalid userId from user's collection")
     public void deleteBookWithIsbnAndInvalidUserIdFromUserTest() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -120,7 +121,8 @@ public class DeleteBookByIsbnUserTest extends BaseTest {
         deleteBookByIsbn(getRandomIsbnFromList(isbnList), invalidUserId, 401);
     }
 
-    @Test@DisplayName("Delete book with ISBN and invalid token from user's collection")
+    @Test
+    @DisplayName("Delete book with ISBN and invalid token from user's collection")
     public void deleteBookWithIsbnAndInvalidTokenFromUserTest() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -147,7 +149,8 @@ public class DeleteBookByIsbnUserTest extends BaseTest {
         deleteBookByIsbn(getRandomIsbnFromList(isbnList), createdUserId, 401);
     }
 
-    @Test@DisplayName("Delete book with ISBN and empty token from user's collection")
+    @Test
+    @DisplayName("Delete book with ISBN and empty token from user's collection")
     public void deleteBookWithIsbnAndEmptyTokenFromUserTest() {
         //create user
         createUser(randomUsername, passwordValue, 201);

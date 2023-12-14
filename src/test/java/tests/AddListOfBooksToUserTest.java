@@ -3,17 +3,17 @@ package tests;
 import dto.ValidAddListOfBookRequest;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AddListOfBooksToUserTest extends BaseTest{
+public class AddListOfBooksToUserTest extends BaseTest {
 
-    @Test@DisplayName("Adding list of books to the user collection")
+    @Test
+    @DisplayName("Adding list of books to the user collection")
     public void successfulAddListOfBooksToUserTest() {
 
         //create user
@@ -45,7 +45,8 @@ public class AddListOfBooksToUserTest extends BaseTest{
         }
     }
 
-    @Test@DisplayName("Adding list of books with invalid Isbns to the user collection")
+    @Test
+    @DisplayName("Adding list of books with invalid Isbns to the user collection")
     public void AddListOfBooksWithInvalidIsbnsToUserTest() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -69,7 +70,8 @@ public class AddListOfBooksToUserTest extends BaseTest{
         addListOfBookInUserCollection(isbnList, createdUserId, 400);
     }
 
-    @Test@DisplayName("Adding list of books to the user collection with invalid userId")
+    @Test
+    @DisplayName("Adding list of books to the user collection with invalid userId")
     public void AddListOfBooksToUserTestWithInvalidUserId() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -90,7 +92,8 @@ public class AddListOfBooksToUserTest extends BaseTest{
         addListOfBookInUserCollection(isbnList, invalidUserId, 401);
     }
 
-    @Test@DisplayName("Adding list of books to the user collection with empty userId")
+    @Test
+    @DisplayName("Adding list of books to the user collection with empty userId")
     public void AddListOfBooksToUserTestWithEmptyUserId() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -111,7 +114,8 @@ public class AddListOfBooksToUserTest extends BaseTest{
         addListOfBookInUserCollection(isbnList, "", 401);
     }
 
-    @Test@DisplayName("Adding list of books to the user collection with invalid token")
+    @Test
+    @DisplayName("Adding list of books to the user collection with invalid token")
     public void AddListOfBooksToUserTestWithInvalidToken() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -132,7 +136,8 @@ public class AddListOfBooksToUserTest extends BaseTest{
         addListOfBookInUserCollection(isbnList, createdUserId, 401);
     }
 
-    @Test@DisplayName("Adding list of books to the user collection with empty token")
+    @Test
+    @DisplayName("Adding list of books to the user collection with empty token")
     public void AddListOfBooksToUserTestWithEmptyToken() {
         //create user
         createUser(randomUsername, passwordValue, 201);

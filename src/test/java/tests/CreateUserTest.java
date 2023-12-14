@@ -8,7 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreateUserTest extends BaseTest {
 
-    @Test@DisplayName("Create the user")
+    @Test
+    @DisplayName("Create the user")
     public void successfulCreateUser() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();
@@ -21,7 +22,8 @@ public class CreateUserTest extends BaseTest {
         deleteUserAfterCreatingUserTest();
     }
 
-    @Test@DisplayName("Create the user with invalid username")
+    @Test
+    @DisplayName("Create the user with invalid username")
     public void createUserWithInvalidUsername() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();
@@ -32,7 +34,8 @@ public class CreateUserTest extends BaseTest {
         deleteUserAfterCreatingUserTest();
     }
 
-    @Test@DisplayName("Create the user with invalid password")
+    @Test
+    @DisplayName("Create the user with invalid password")
     public void createUserWithInvalidPassword() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();
@@ -42,7 +45,8 @@ public class CreateUserTest extends BaseTest {
 
     }
 
-    @Test@DisplayName("Create the user with empty username")
+    @Test
+    @DisplayName("Create the user with empty username")
     public void createUserWithEmptyUsername() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();
@@ -51,7 +55,8 @@ public class CreateUserTest extends BaseTest {
         createUser("", passwordValue, 400);
     }
 
-    @Test@DisplayName("Create the user with empty password")
+    @Test
+    @DisplayName("Create the user with empty password")
     public void createUserWithEmptyPassword() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();

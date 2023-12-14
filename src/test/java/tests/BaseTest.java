@@ -11,7 +11,13 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import java.util.*;
+//import org.passay.CharacterData;
+//import org.passay.CharacterRule;
+//import org.passay.EnglishCharacterData;
+//import org.passay.PasswordGenerator;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static io.restassured.RestAssured.given;
@@ -22,6 +28,7 @@ public class BaseTest {
     Faker faker = new Faker();
     String randomUsername = faker.name().username();
     String passwordValue = "mp0p7wCcYJfnSQG_3!";
+//  String passwordValue = generatePassword();
     String invalidUsername = faker.regexify("[a-zA-Z0-9!@#$%^&*(),.?\":{}|<>]{45}");
     String invalidPassword = faker.internet().password();
     String invalidUserId = faker.internet().uuid();
@@ -206,6 +213,7 @@ public class BaseTest {
                 .build();
         return postRequest(authorizedEndpoint, responseCode, authorizedUserBody);
     }
+
     public Response checkAuthorization(String username, String password) {
         return checkAuthorization(username, password, 200);
     }
@@ -214,6 +222,7 @@ public class BaseTest {
         createdUserId = userId;
         return getRequest(userEndpoint + createdUserId, responseCode);
     }
+
     public Response getUserInformation(String userId) {
         return getUserInformation(userId, 200);
     }
@@ -270,4 +279,26 @@ public class BaseTest {
                 .build();
         return deleteRequestWithBody(bookEndpoint, responseCode, deleteBookByUserRequest);
     }
+
+//    public static String generatePassword() {
+//        PasswordGenerator generator = new PasswordGenerator();
+//
+//        // Rules for password
+//        CharacterRule digits = new CharacterRule(EnglishCharacterData.Digit);
+//        CharacterRule lowerCase = new CharacterRule(EnglishCharacterData.LowerCase);
+//        CharacterRule upperCase = new CharacterRule(EnglishCharacterData.UpperCase);
+//        CharacterRule specialChars = new CharacterRule(new CharacterData() {
+//            public String getErrorCode() {
+//                return "SPECIAL_CHAR_ERROR";
+//            }
+//
+//            public String getCharacters() {
+//                return "!?.,*()+";
+//            }
+//        });
+//
+//
+//        // Generate a password with length 12 symbols
+//        return generator.generatePassword(12, specialChars, digits, lowerCase, upperCase);
+//    }
 }

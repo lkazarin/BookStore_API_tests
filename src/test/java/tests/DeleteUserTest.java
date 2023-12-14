@@ -1,16 +1,12 @@
 package tests;
 
-import io.restassured.response.Response;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 public class DeleteUserTest extends BaseTest {
 
-    @Test@DisplayName("Delete user")
+    @Test
+    @DisplayName("Delete user")
     public void successfulDeleteUser() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();
@@ -28,7 +24,8 @@ public class DeleteUserTest extends BaseTest {
         deleteUserWithoutBody(createdUserId, 200);
     }
 
-    @Test@DisplayName("Delete user with invalid userId")
+    @Test
+    @DisplayName("Delete user with invalid userId")
     public void deleteUserWithInvalidUserId() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -43,7 +40,8 @@ public class DeleteUserTest extends BaseTest {
         deleteUserWithoutBody(invalidUserId, 401);
     }
 
-    @Test@DisplayName("Delete user with empty userId")
+    @Test
+    @DisplayName("Delete user with empty userId")
     public void deleteUserWithEmptyUserId() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -58,7 +56,8 @@ public class DeleteUserTest extends BaseTest {
         deleteUserWithoutBody("", 401);
     }
 
-    @Test@DisplayName("Delete user with invalid token")
+    @Test
+    @DisplayName("Delete user with invalid token")
     public void deleteUserWithInvalidToken() {
         //create user
         createUser(randomUsername, passwordValue, 201);
@@ -73,7 +72,8 @@ public class DeleteUserTest extends BaseTest {
         deleteUserWithoutBody(createdUserId, 401);
     }
 
-    @Test@DisplayName("Delete user with empty token")
+    @Test
+    @DisplayName("Delete user with empty token")
     public void deleteUserWithEmptyToken() {
         //create user
         createUser(randomUsername, passwordValue, 201);

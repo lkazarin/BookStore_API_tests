@@ -3,15 +3,16 @@ package tests;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class GetAllBookInformationTest extends BaseTest{
+public class GetAllBookInformationTest extends BaseTest {
 
-    @Test@DisplayName("Get all book information")
+    @Test
+    @DisplayName("Get all book information")
     public void successfulGetAllBookInformation() {
         //note that the user is deleted by the test so that @AfterEach is not triggered
         markUserAsDeleted();
